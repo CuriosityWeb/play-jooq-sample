@@ -17,3 +17,5 @@ And then browse the url: [localhost:9000](http://localhost:9000)
  - https://www.jooq.org/
 
 ## Project Images
+
+![sample-image](sample-image.jpg)
