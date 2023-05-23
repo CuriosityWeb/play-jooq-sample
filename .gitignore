@@ -1,0 +1,9 @@
+.bsp
+.idea
+null
+logs
+target
+h2db
+
+*.class
+*.log

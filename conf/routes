@@ -1,0 +1,14 @@
+GET           /                                       controllers.Assets.at(path="/public", file="swagger/index.html")
+GET           /swagger.json                           controllers.Assets.at(path="/public", file="swagger.json")
+
+POST          /userInfo/add                           controllers.UserInfoController.addUser()
+POST          /userInfo/addRandom/:count              controllers.UserInfoController.addRandomUserInfo(count: Int)
+GET           /userInfo/get/:id                       controllers.UserInfoController.getUser(id)
+GET           /userInfo/getAll                        controllers.UserInfoController.getAll()
+PUT           /userInfo/updateFName/:id/:fName        controllers.UserInfoController.updateFName(id, fName)
+PUT           /userInfo/updateLName/:id/:lName        controllers.UserInfoController.updateLName(id, lName)
+PUT           /userInfo/updateAge/:id/:age            controllers.UserInfoController.updateAge(id, age)
+DELETE        /userInfo/delete/:id                    controllers.UserInfoController.delete(id)
+DELETE        /userInfo/deleteAll                     controllers.UserInfoController.deleteAll()
+
+GET           /assets/*file                           controllers.Assets.versioned(path="/public", file: Asset)

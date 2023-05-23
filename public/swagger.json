@@ -1,0 +1,372 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Play-Jooq-Sample",
+    "description": "This is a sample application to showcase integration of play framework with jooq and swagger.",
+    "version": "1.0.0",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "contact": {
+      "name": "CuriosityWeb",
+      "url": "https://github.com/CuriosityWeb",
+      "email": "sdims109@gmail.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "UserInfoController"
+    }
+  ],
+  "paths": {
+    "/userInfo/add": {
+      "post": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Add user information into the database.",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "user-info",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The request succeeded, and a new resource was created as a result.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Malformed request syntax",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "409": {
+            "description": "This response is sent when a request conflicts with the current state of the server.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/addRandom/{count}": {
+      "post": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Add random number of user info records into database.",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "count",
+            "description": "number of records to be added",
+            "type": "integer",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "The request succeeded, and a new resource was created as a result.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/get/{id}": {
+      "get": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Returns user information for the supplied id.",
+        "produces": [
+          "application/json",
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "schema": {
+              "$ref": "#/definitions/UserInfo"
+            }
+          },
+          "404": {
+            "description": "The server can not find the requested resource.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/getAll": {
+      "get": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Get All Users Information.",
+        "produces": [
+          "application/json",
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserInfo"
+              }
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/updateFName/{id}/{fName}": {
+      "put": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Update first name from user info using id in database",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "fName",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/updateLName/{id}/{lName}": {
+      "put": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Update last name from user info using id in database",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "lName",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/updateAge/{id}/{age}": {
+      "put": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Update age from user info using id in database",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "age",
+            "description": "YYYY-MM-DD",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/delete/{id}": {
+      "delete": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Delete user information for the supplied id from database.",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/userInfo/deleteAll": {
+      "delete": {
+        "tags": [
+          "UserInfoController"
+        ],
+        "description": "Delete all user information from the database.",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "The request succeeded.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "The server has encountered a situation it does not know how to handle.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "user-1"
+        },
+        "fName": {
+          "type": "string",
+          "example": "Test"
+        },
+        "lName": {
+          "type": "string",
+          "example": "User"
+        },
+        "age": {
+          "type": "string",
+          "example": "2022-09-16"
+        }
+      }
+    }
+  }
+}
